@@ -60,7 +60,7 @@
                 ctx.globalAlpha = this.life;
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
-                ctx.fillStyle = '#00ff88';
+                ctx.fillStyle = '#8a63afff';
                 ctx.fill();
             }
         }
@@ -69,7 +69,7 @@
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             
             // Add new particles
-            if (particles.length < 50) {
+            if (particles.length < 100) {
                 particles.push(new Particle());
             }
             

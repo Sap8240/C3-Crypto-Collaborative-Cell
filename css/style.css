@@ -1016,10 +1016,10 @@ nav ul li a:focus {
     text-align: center;
     word-break: break-word;
     max-width: 100%;
-    overflow: hidden;
+    
     text-overflow: ellipsis;
     white-space: normal;
-    max-height: 2.5em;
+    
     line-height: 1.2em;
 }
 
@@ -1046,10 +1046,8 @@ nav ul li a:focus {
     text-align: center;
     word-break: break-word;
     max-width: 100%;
-    overflow: hidden;
     text-overflow: ellipsis;
     white-space: normal;
-    max-height: 4.2em;
     line-height: 1.2em;
 }
 

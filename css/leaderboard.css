@@ -1,0 +1,339 @@
+/* Global Styles */
+:root {
+    --primary-green: #00ff00;
+    --dark-bg: #0d0d0d;
+    --medium-bg: #1a1a1a;
+    --light-bg: #2a2a2a;
+    --text-primary: #ffffff;
+    --text-secondary: #aaaaaa;
+    --border-color: #333333;
+}
+
+body {
+    background-color: var(--dark-bg);
+    color: var(--text-primary);
+    font-family: 'Press Start 2P', monospace;
+    margin: 0;
+    padding: 20px;
+    font-size: 10px;
+    line-height: 1.6;
+    overflow-x: hidden; 
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Header */
+.leaderboard-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+.leaderboard-header h1 {
+    color: var(--primary-green);
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+.leaderboard-header p {
+    color: var(--text-secondary);
+    font-size: 12px;
+}
+
+/* Top 3 Section */
+.top-three-container {
+    position: relative;
+    padding: 0 10%;
+    margin-bottom: 40px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 40px;
+}
+
+/* NEW: Connecting Lines */
+.top-three-container::before,
+.top-three-container::after {
+    content: '';
+    position: absolute;
+    bottom: 40px; /* Align with bottom border */
+    width: 20%; /* Width of the line */
+    height: 30px; /* Controls the 'dip' */
+    border-color: var(--primary-green);
+    border-style: solid;
+    opacity: 0.3;
+}
+/* Line from #1 to #2 */
+.top-three-container::before {
+    left: 20%;
+    border-width: 0 0 2px 2px; /* Bottom and left border */
+    border-bottom-left-radius: 10px;
+}
+/* Line from #1 to #3 */
+.top-three-container::after {
+    right: 20%;
+    border-width: 0 2px 2px 0; /* Bottom and right border */
+    border-bottom-right-radius: 10px;
+}
+
+.top-three {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 10px;
+    position: relative;
+}
+
+.player-card {
+    background-color: var(--medium-bg);
+    border: 2px solid var(--border-color);
+    padding: 15px;
+    text-align: center;
+    width: 28%;
+    transition: transform 0.3s ease;
+    z-index: 2;
+}
+.player-card.top-1 {
+    width: 33%;
+    border-color: var(--primary-green);
+    transform: translateY(-20px);
+    background: linear-gradient(to bottom, var(--medium-bg), var(--dark-bg));
+    box-shadow: 0 0 15px var(--primary-green);
+    z-index: 3; /* On top of lines */
+}
+.avatar {
+    width: 64px;
+    height: 64px;
+    border: 2px solid var(--border-color);
+    margin-bottom: 10px;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+.player-card.top-1 .avatar {
+    width: 80px;
+    height: 80px;
+}
+.player-info .rank-label {
+    color: var(--text-secondary);
+    font-size: 12px;
+    display: block;
+}
+.player-info .username {
+    color: var(--text-primary);
+    font-size: 12px;
+    display: block;
+    margin: 5px 0;
+    word-wrap: break-word;
+}
+.metric { margin-top: 10px; }
+.metric-value {
+    color: var(--text-primary);
+    font-size: 14px;
+    display: block;
+}
+.metric-label {
+    color: var(--text-secondary);
+    font-size: 10px;
+    display: block;
+}
+
+
+/* Leaderboard Table */
+.leaderboard-table-container {
+    background-color: var(--medium-bg);
+    border: 1px solid var(--border-color);
+}
+.leaderboard-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.leaderboard-table th,
+.leaderboard-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+.leaderboard-table th {
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    font-size: 10px;
+}
+.leaderboard-table td {
+    font-size: 12px;
+}
+
+/* NEW: Table Interactivity */
+.leaderboard-table tbody tr:not(.user-row):not(.player-details-row) {
+    cursor: pointer;
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+.leaderboard-table tbody tr:not(.user-row):not(.player-details-row):hover {
+    background-color: var(--light-bg);
+    transform: scale(1.01); /* Lift effect */
+    box-shadow: 0 0 10px var(--primary-green);
+    z-index: 10;
+    position: relative;
+}
+
+.leaderboard-table tbody tr.active:not(.user-row) {
+     background-color: #2b2b2b;
+}
+
+.user-row {
+    background-color: #111;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color) !important;
+}
+.you-label {
+    background-color: #ff9800;
+    color: var(--dark-bg);
+    padding: 3px 6px;
+    border-radius: 3px;
+    font-weight: bold;
+}
+.coin-icon {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-color: #317aff;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    margin-left: 5px;
+}
+
+/* NEW: Click-to-Expand Details Row */
+.player-details-row {
+    display: none;
+    background-color: #111;
+}
+.player-details-row td {
+    padding: 20px 30px !important; /* Override default padding */
+    text-align: left;
+}
+tr.active + .player-details-row {
+    /* This selector shows the details row when its preceding sibling has class 'active' */
+    display: table-row;
+}
+.player-details-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+    gap: 15px;
+}
+.player-details-content div {
+    font-size: 11px;
+    color: var(--text-secondary);
+}
+.player-details-content strong {
+    color: var(--text-primary);
+}
+.challenge-btn {
+    background-color: var(--primary-green);
+    color: var(--dark-bg);
+    border: none;
+    padding: 8px 12px;
+    font-family: 'Press Start 2P';
+    font-size: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.challenge-btn:hover {
+    background-color: #fff;
+    box-shadow: 0 0 10px #fff;
+}
+
+
+/* NEW: Real-time "Flash" Animation */
+@keyframes flash {
+    0% {
+        background-color: var(--primary-green);
+        color: var(--dark-bg);
+    }
+    100% {
+        background-color: transparent;
+        color: var(--text-primary);
+    }
+}
+.flash-update {
+    /* Apply the animation */
+    animation: flash 0.8s ease-out;
+}
+
+
+/* Responsive Styles (MOBILE) */
+@media (max-width: 768px) {
+    body { font-size: 12px; }
+    .leaderboard-header h1 { font-size: 20px; }
+    .leaderboard-header p { font-size: 11px; }
+
+    /* Hide connecting lines on mobile */
+    .top-three-container {
+        padding: 0;
+    }
+    .top-three-container::before,
+    .top-three-container::after {
+        display: none;
+    }
+
+    .top-three {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    .player-card,
+    .player-card.top-1 {
+        width: 90%;
+        transform: translateY(0);
+    }
+    .player-card.top-1 { order: -1; }
+    .player-card { order: 1; }
+
+    /* Responsive Table */
+    .leaderboard-table thead { display: none; }
+    .leaderboard-table tr {
+        display: block;
+        border: 1px solid var(--border-color);
+        margin-bottom: 15px;
+        background-color: #1c1c1c;
+    }
+    /* Hide details row in mobile card view, show on active */
+    .player-details-row {
+        display: none;
+        border: none;
+        margin-bottom: 0;
+    }
+    tr.active + .player-details-row {
+        display: block;
+    }
+    .player-details-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .leaderboard-table td {
+        display: block;
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+        border-bottom: 1px dotted var(--border-color);
+    }
+    .leaderboard-table td:last-child { border-bottom: none; }
+    .leaderboard-table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 15px;
+        text-align: left;
+        color: var(--text-secondary);
+        font-weight: bold;
+    }
+    .leaderboard-table td[data-label="PLAYER"] {
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    /* Stop hover-lift effect on mobile (touch) */
+     .leaderboard-table tbody tr:not(.user-row):not(.player-details-row):hover {
+        transform: none;
+        box-shadow: none;
+    }
+}

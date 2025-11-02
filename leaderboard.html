@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Leaderboard</title>
+    <link rel="stylesheet" href="css/leaderboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <main class="container">
+        <header class="leaderboard-header">
+            <h1>LEADERBOARD</h1>
+            <p>Provide liquidity to the house by purchasing $DGN and earning yield from the losses of the players.</p>
+        </header>
+
+        <div class="top-three-container">
+            <section class="top-three">
+                <div class="player-card" id="top-2">
+                    <img src="https://via.placeholder.com/64x64/333/fff?text=PFP" alt="Player 2 Avatar" class="avatar">
+                    <div class="player-info">
+                        <span class="rank-label">[2]</span>
+                        <span class="username">shannon_kautzer</span>
+                        <div class="metric">
+                            <span class="metric-value">1,671.57</span>
+                            <span class="metric-label">VOLUME</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="player-card top-1" id="top-1">
+                    <img src="https://via.placeholder.com/80x80/555/fff?text=PFP" alt="Player 1 Avatar" class="avatar">
+                    <div class="player-info">
+                        <span class="rank-label">[1]</span>
+                        <span class="username">marion_stiedemann</span>
+                        <div class="metric">
+                            <span class="metric-value">1,671.57</span>
+                            <span class="metric-label">VOLUME</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="player-card" id="top-3">
+                    <img src="https://via.placeholder.com/64x64/333/fff?text=PFP" alt="Player 3 Avatar" class="avatar">
+                    <div class="player-info">
+                        <span class="rank-label">[3]</span>
+                        <span class="username">billy_mraz</span>
+                        <div class="metric">
+                            <span class="metric-value">1,671.57</span>
+                            <span class="metric-label">VOLUME</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <section class="leaderboard-table-container">
+            <table class="leaderboard-table">
+                <thead>
+                    <tr>
+                        <th>RANK</th>
+                        <th>PLAYER</th>
+                        <th>WON</th>
+                        <th>TRADES</th>
+                        <th>WIN RATE</th>
+                        <th>VOLUME</th>
+                    </tr>
+                </thead>
+                <tbody id="leaderboard-body">
+                    <tr class="user-row">
+                        <td data-label="RANK">UNRANKED</td>
+                        <td data-label="PLAYER"><span class="you-label">You</span></td>
+                        <td data-label="WON">0.00 🪙</td>
+                        <td data-label="TRADES">0</td>
+                        <td data-label="WIN RATE">0.00%</td>
+                        <td data-label="VOLUME">0.00 🪙</td>
+                    </tr>
+                    </tbody>
+            </table>
+        </section>
+    </main>
+
+    <script src="js/leaderboard.js"></script>
+</body>
+</html>

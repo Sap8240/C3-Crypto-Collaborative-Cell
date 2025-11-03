@@ -1019,7 +1019,7 @@ nav ul li a:focus {
     
     text-overflow: ellipsis;
     white-space: normal;
-    
+    max-height: 2.5em;
     line-height: 1.2em;
 }
 

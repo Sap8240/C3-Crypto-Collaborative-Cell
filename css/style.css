@@ -387,7 +387,6 @@
 
         /* Events Flex Layout */
 .events-flex {
-    display: flex;
     align-items: stretch;
     gap: 40px;
     justify-content: space-between;
